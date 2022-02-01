@@ -1,6 +1,5 @@
-
 // COLOR PALETTE
-$mainBgc: rgb(83, 83, 83);;
+$mainBgc: rgb(83, 83, 83);
 $secBgc: #111;
 $txt: #fff;
 $brand: #30d0fb;
@@ -14,10 +13,10 @@ $headerHeight: 50px;
 $mainContentHeight: calc(100vh - $headerHeight * 1.5);
 
 // LAYOUT BREAKPOINTS
-$break-narrow: 460px;
-$break-normal: 640px;
+$break-mobile: 460px;
+$break-narrow: 768px;
 $break-wide: 960px;
 
-$padded-break-narrow: $break-narrow + $layoutPadding * 2;
-$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-narrow: $break-mobile + $layoutPadding * 2;
+$padded-break-normal: $break-narrow + $layoutPadding * 2;
 $padded-break-wide: $break-wide + $layoutPadding * 2;

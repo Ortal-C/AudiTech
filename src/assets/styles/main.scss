@@ -5,9 +5,7 @@
 @import 'setup/functions';
 
 // BASICS
-@import 'basics/helpers';
 @import 'basics/base';
-@import 'basics/layout';
 
 // COMPONENTS
 @import 'components/layout/app-header';
@@ -25,3 +23,4 @@
 // VIEWS
 @import 'views/login';
 @import 'views/market-page';
+@import 'views/market-details';

@@ -1,6 +1,6 @@
 <template>
 	<section class="user-menu">
-		<div class="backdrop" @click="closeMenu"></div>
+		<backdrop @close="close" />
 		<main >
 			<h4>Hi, {{ user.username }}</h4>
 			<button @click="updateData">Update List</button>
@@ -10,21 +10,23 @@
 </template>
 
 <script>
+	import backdrop from '@/components/UI/modal/backdrop.vue'
 	export default {
 		name: 'user-menu',
 		props: ['user'],
 		methods: {
-			closeMenu() {
-				this.$emit('closeMenu')
+			close() {
+				this.$emit('close')
 			},
             async updateData(){
                 try{
+					this.close()
                     await this.$store.dispatch({
                             type: 'resetMarkets',
                         })  
                     await this.$store.dispatch({
                             type: 'loadMarkets',
-                        })  
+                        })
                 }catch (err) {
 					console.log('Failed to reload markets', err)
 				}
@@ -34,13 +36,16 @@
 					await this.$store.dispatch({
 						type: 'logout',
 					})
-					this.closeMenu()
-                    this.$router.push('/')
+					this.close()
+                    this.$router.back('/')
 				} catch (err) {
 					console.log('Failed to login', err)
 				}
 			},
 		},
+			components: {
+				backdrop,
+			},
 	}
 </script>
 

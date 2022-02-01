@@ -9,7 +9,7 @@
 		<user-menu
 			v-if="isMenuOpen"
 			:user="user"
-			@closeMenu="isMenuOpen = false"
+			@close="isMenuOpen = false"
 		/>
 	</main>
 </template>

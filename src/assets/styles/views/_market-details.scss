@@ -1,0 +1,14 @@
+.market-details {
+    width: 100%;
+	.main-content {
+		position: fixed;
+		left: 12.5%;
+		top: 25%;
+		transform: translate(-50%, -50%);
+		z-index: 100;
+		width: 75%;
+		height: 66%;
+		background: #fff;
+        color: $mainBgc;
+	}
+}
