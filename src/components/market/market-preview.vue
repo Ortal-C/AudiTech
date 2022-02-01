@@ -1,5 +1,5 @@
 <template>
-	<main class="market-preview">
+	<main class="market-preview" @click="showMarketDetails">
 		<header class="title">
 			<main>
 				<div
@@ -34,7 +34,7 @@
 		<div class="price" title="Market Price">
 			{{ market.regularMarketPrice.fmt }}
 		</div>
-		<button class="btn-details" title="Click for more details" @click="showMarketDetails">→</button>
+		<button class="btn-details" title="Click for more details">→</button>
 	</main>
 </template>
 
