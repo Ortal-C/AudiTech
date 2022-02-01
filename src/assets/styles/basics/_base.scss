@@ -1,0 +1,74 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: Montserrat, sans-serif;
+	color: $txt;
+	line-height: 1.8;
+}
+
+body {
+	margin: 0;
+	background-color: #333;
+}
+#app {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
+h1 {
+	font-size: rem(60px);
+}
+h2 {
+	font-size: rem(32px);
+}
+
+img {
+	width: 100%;
+}
+a,
+a:hover,
+a:active,
+a:visited {
+	text-decoration: none;
+	color: $txt;
+}
+p {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+
+input {
+	height: 40px;
+	width: 360px;
+	border: none;
+	border-radius: 1em;
+	padding: 12px;
+	font-size: 1rem;
+	color: $mainBgc;
+}
+img {
+		height: 200px;
+		width: 200px;
+		border-radius: 4px;
+		box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+	}

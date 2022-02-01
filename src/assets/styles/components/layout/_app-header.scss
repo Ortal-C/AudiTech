@@ -1,0 +1,8 @@
+.app-header{
+    flex-grow: $headerHeight;
+    padding: calc($layoutPadding / 2) $layoutPadding;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}

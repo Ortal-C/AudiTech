@@ -1,0 +1,11 @@
+.login {
+	height: $mainContentHeight;
+    padding: $layoutPadding;
+	overflow-y: scroll;
+	padding: $layoutPadding;
+
+	//scroll-bar
+	::-webkit-slider-thumb {
+		background-color: blue;
+	}
+}
