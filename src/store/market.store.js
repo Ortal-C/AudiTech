@@ -19,7 +19,7 @@ export const marketStore = {
             state.markets = markets;
         },
         setCurrMarket(state, { currMarket }) {
-            state.market = currMarket;
+            state.currMarket = currMarket;
         }
     },
     actions: {

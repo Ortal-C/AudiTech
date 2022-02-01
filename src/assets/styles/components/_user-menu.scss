@@ -1,47 +1,36 @@
-.user-menu {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: 100vw;
-	background-color: #00000054;
-	margin: 0;
-	.menu {
-		position: fixed;
-		top: $headerHeight;
-		right: $layoutPadding;
-		background-color: transparent;
-		padding: 1rem;
-		border-radius: 14px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-		z-index: 30;
-		animation: slide-down 300ms ease-out forwards;
-		display: flex;
-		flex-direction: column;
-		align-content: center;
-		button {
-            width: 100%;
-			font: inherit;
-            text-shadow: 0.5px 1px 0.5px #00000075;;
-			color: white;
-			border: 1px solid white;
-			text-align: center;
-			border-radius: 6px;
-			background-color:  $brand;
-			cursor: pointer;
-			margin-left: 1rem;
-			margin: 0.25rem;
-		}
-
-		// right: $layoutPadding;
-		// top: calc($headerHeight + 10px);
+.user-menu main {
+	position: absolute;
+	z-index: 40;
+	top: $headerHeight;
+	right: $layoutPadding;
+	background-color: transparent;
+	padding: 1rem;
+	border-radius: 14px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+	animation: slide-down 300ms ease-out forwards;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	button {
+		z-index: 40;
+		width: 100%;
+		font: inherit;
+		text-shadow: 0.5px 1px 0.5px #00000075;
+		color: $txt;
+		background-color: $brand;
+		border: 1px solid $txt;
+		text-align: center;
+		border-radius: 6px;
+		cursor: pointer;
+		margin-left: 1rem;
+		margin: 0.25rem;
 	}
 }
 
 @keyframes slide-down {
 	from {
 		opacity: 0;
-		transform: translateY(-3rem);
+		transform: translateY(-1.5rem);
 	}
 	to {
 		opacity: 1;

@@ -1,10 +1,11 @@
 <template>
-	<section class="user-menu" @click="closeMenu">
-		<div class="menu">
+	<section class="user-menu">
+		<div class="backdrop" @click="closeMenu"></div>
+		<main >
 			<h4>Hi, {{ user.username }}</h4>
 			<button @click="updateData">Update List</button>
 			<button @click="doLogout">Logout</button>
-		</div>
+		</main>
 	</section>
 </template>
 
@@ -33,6 +34,7 @@
 					await this.$store.dispatch({
 						type: 'logout',
 					})
+					this.closeMenu()
                     this.$router.push('/')
 				} catch (err) {
 					console.log('Failed to login', err)

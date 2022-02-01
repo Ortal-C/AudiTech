@@ -1,8 +1,8 @@
 <template>
 	<main class="login">
-		<form @submit.prevent="doLogin">
-			<template>
-				<label for="username">Username</label>
+		<section class="container">
+			<h3>Login</h3>
+			<form class="login-form" @submit.prevent="doLogin">
 				<input
 					id="username"
 					type="text"
@@ -10,9 +10,6 @@
 					placeholder="Enter username..."
 					required
 				/>
-			</template>
-			<template>
-				<label for="password">Password</label>
 				<input
 					id="password"
 					type="password"
@@ -20,10 +17,10 @@
 					placeholder="Enter password..."
 					required
 				/>
-			</template>
-			<button>Login</button>
-		</form>
-		<p>{{msg}}</p>
+				<button class="btn-login">Login</button>
+			</form>
+			<h5>{{ msg }}</h5>
+		</section>
 	</main>
 </template>
 
@@ -37,13 +34,15 @@
 					username: '',
 					password: '',
 				},
-				msg: ''
+				msg: '',
 			}
 		},
 		methods: {
 			async doLogin() {
 				try {
-					const encryptedPass = utilService.encrypt(this.loginCred.password)
+					const encryptedPass = utilService.encrypt(
+						this.loginCred.password
+					)
 					await this.$store.dispatch({
 						type: 'login',
 						userCred: {
@@ -51,8 +50,11 @@
 							password: encryptedPass,
 						},
 					})
-					if (this.isLoginSucceed) this.$router.push('/Markets')
-					else this.msg = 'Username or Password is incorrect'
+					if (this.isLoginSucceed)
+						this.$router.push('/Markets')
+					else
+						this.msg =
+							'Incorrect username or password.'
 				} catch (err) {
 					console.log('Failed to login', err)
 				}
@@ -60,8 +62,8 @@
 		},
 		computed: {
 			isLoginSucceed() {
-				return this.$store.getters.isLoggedin 
-			}
+				return this.$store.getters.isLoggedin
+			},
 		},
 	}
 </script>

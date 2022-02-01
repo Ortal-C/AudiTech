@@ -9,24 +9,6 @@
 		object-fit: cover;
 		transform: rotateZ(-5deg) translateY(-4rem) translateX(0);
 	}
-	.main-content {
-		z-index: 10;
-		position: absolute;
-		top: calc($headerHeight + 3.5rem);
-		right: 5%;
-		left: 5%;
-		height: 80%;
-		width: 90%;
-		padding: 1rem;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-		border-radius: 14px;
-		background-color: $mainBgc;
-		color: $txt;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		animation: container-appears 1s ease-out forwards;
-	}
 }
 
 @keyframes container-appears {

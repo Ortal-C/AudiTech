@@ -2,12 +2,12 @@
 	width: 100%;
 	border-bottom: 1px dotted rgba(128, 128, 128, 0.335);
 	display: grid;
-	grid-template-columns: 40% 12% 12% 12% 12%;
+	grid-template-columns: 40% 12% 12% 12% 12% auto;
 	grid-template-rows: 80px;
-	grid-template-areas: 'title' 'previous-close' 'precent' 'change' 'price';
-	gap: 2%;
+	grid-template-areas: 'title' 'previous-close' 'precent' 'change' 'price' 'btn-details';
 	& > * {
 		padding: 0.25rem;
+		margin-inline-end: 0 2%;
 		font-size: 0.85rem;
 		display: flex;
 		justify-content: center;
@@ -26,7 +26,7 @@
 				border-radius: 0.5em;
 				padding: 0.25rem;
 				height: 2rem;
-				width: 66px;
+				width: 80px;
 				margin-inline-end: 24px;
 			}
 		}
@@ -43,30 +43,34 @@
 	.price {
 		grid-area: 'price';
 	}
-	.market-rise {
+	.btn-details {
+		grid-area: 'btn-details';
+		background-color: transparent;
+		border: none;
+		color: $txt;
+		&:hover {
+			color: $brand;
+		}
+	}
+	.state {
 		align-self: center;
+		margin: auto;
+		border-radius: 0.5em;
+		height: 2rem;
+		font-size: 0.75rem;
+		width: 90%;
+	}
+	.market-rise {
 		background-color: #f0f9eb;
 		border: 1px solid #e1f3d8;
-		border-radius: 0.5em;
 		color: #67c23a;
-		padding: 0 0.5rem;
-		line-height: 1.85;
-		height: 2rem;
 		&::before {
-			content: '↑ +';
+			content: '+';
 		}
 	}
 	.market-decline {
-		align-self: center;
 		background-color: #fef0f0;
 		border: 1px solid #fde2e2;
-		border-radius: 0.5em;
 		color: #f56c6c;
-		padding: 0 0.5rem;
-		line-height: 1.85;
-		height: 2rem;
-		&::before {
-			content: '↓ ';
-		}
 	}
 }
