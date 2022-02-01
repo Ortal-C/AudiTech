@@ -4,6 +4,7 @@ const CRYPTED_KEY = 'this is the classical cipher algorithm'
 export const utilService = {
     makeId,
     getRandomColor,
+    camelCaseToWord,
     debounce,
     encrypt,
     decrypt,
@@ -25,6 +26,11 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function camelCaseToWord(str) {
+    const result = str.replace(/([A-Z])/g, " $1");
+    return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
 function debounce(func, wait) {

@@ -1,6 +1,7 @@
 .market-details {
     width: 100%;
 	.main-content {
+		overflow-y: scroll;
 		position: fixed;
 		left: 12.5%;
 		top: 25%;
@@ -10,5 +11,14 @@
 		height: 66%;
 		background: #fff;
         color: $mainBgc;
+		ul li{
+			&:nth-child(even){
+				background-color: $thirdBgc;
+			}
+		}
+		.key{
+			display: inline-block;
+			width:50%;
+		}
 	}
 }
