@@ -10,7 +10,7 @@ $cardHoverBgc: #282828;
 // LAYOUT
 $layoutPadding: 20px;
 $headerHeight: 50px;
-$mainContentHeight: calc(100vh - $headerHeight);
+$mainContentHeight: calc(100vh - $headerHeight * 1.5);
 
 // LAYOUT BREAKPOINTS
 $break-narrow: 460px;

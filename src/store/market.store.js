@@ -18,7 +18,7 @@ export const marketStore = {
         setMarkets(state, { markets }) {
             state.markets = markets;
         },
-        setMarket(state, { currMarket }) {
+        setCurrMarket(state, { currMarket }) {
             state.market = currMarket;
         }
     },
@@ -32,6 +32,17 @@ export const marketStore = {
                 return markets;
             } catch (err) {
                 console.log('marketStore: Error in loadMarkets', err)
+                throw err
+            }
+        },
+        async resetMarkets({ commit }) {
+            try {
+                await marketService.reset()
+                commit({ type: 'setMarkets', markets: [] })
+                commit({ type: 'setCurrMarket', currMarket: null })
+                return true;
+            } catch (err) {
+                console.log('marketStore: Error in resetMarkets', err)
                 throw err
             }
         },

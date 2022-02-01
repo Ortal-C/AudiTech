@@ -42,15 +42,10 @@ async function login(userCred) {
         return username
     }
     return isLogged
-    // const user = await httpService.post('auth/login', userCred)
-    // socketService.emit('set-user-socket', user._id);
-    // if (user) return _saveLocalUser(user)
 }
 
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    // socketService.emit('unset-user-socket');
-    return await httpService.post('auth/logout')
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
 }
 
 function remove(userId) {

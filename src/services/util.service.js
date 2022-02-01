@@ -3,16 +3,10 @@ const CRYPTED_KEY = 'this is the classical cipher algorithm'
 
 export const utilService = {
     makeId,
+    getRandomColor,
     debounce,
     encrypt,
     decrypt,
-}
-
-function encrypt(txt) {
-    return CryptoJS.AES.encrypt(txt, CRYPTED_KEY).toString();
-}
-function decrypt(txt) {
-    return CryptoJS.AES.decrypt(txt, CRYPTED_KEY).toString(CryptoJS.enc.Utf8);
 }
 
 function makeId(length = 5) {
@@ -22,6 +16,15 @@ function makeId(length = 5) {
         text += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return text
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
 
 function debounce(func, wait) {
@@ -35,3 +38,11 @@ function debounce(func, wait) {
         timeout = setTimeout(later, wait);
     };
 };
+
+function encrypt(txt) {
+    return CryptoJS.AES.encrypt(txt, CRYPTED_KEY).toString();
+}
+
+function decrypt(txt) {
+    return CryptoJS.AES.decrypt(txt, CRYPTED_KEY).toString(CryptoJS.enc.Utf8);
+}

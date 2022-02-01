@@ -1,5 +1,6 @@
 <template>
-		<svg class="user-icon"
+	<button class="user-icon" @click="userOptions(toggleMenu)">
+		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			x="0px"
 			y="0px"
@@ -32,10 +33,21 @@
 				</g>
 			</g>
 		</svg>
+	</button>
 </template>
 
 <script>
 	export default {
 		name: 'user-icon',
+        data(){
+            return {
+                toggleMenu: false
+            }
+        },
+        methods: {
+            userOptions(toggleMenu) {
+                this.$emit('userOptions', !toggleMenu)
+            }
+        },
 	}
 </script>

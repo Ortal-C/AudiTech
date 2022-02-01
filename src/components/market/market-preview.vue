@@ -1,28 +1,44 @@
 <template>
 	<main class="market-preview">
-		<hr />
 		<header class="title">
-			<div class="badge" :title="`Market symbol: ${market.symbol}`">
-				{{ market.exchange }}
-			</div>
-			<h3 :title="`Short name: ${market.shortName}`">
-				{{ market.fullExchangeName }}
-			</h3>
+			<main>
+				<div
+					class="tag" :style="`background-color: ${tagBackgroundColor}`"
+					:title="`Market symbol: ${market.symbol}`"
+				>
+					{{ market.exchange }}
+				</div>
+				<h3 :title="`Short name: ${market.shortName}`">
+					{{ market.shortName }}
+				</h3>
+			</main>
+			<p
+				:title="`Regular Market Time: ${market.regularMarketTime.fmt}`"
+			>
+				<span>Last Updated:</span>
+				{{ marketTime }}
+			</p>
 		</header>
-		<p :title="`Regular Market Time: ${market.regularMarketTime.fmt}`">
-			Last Updated: {{ marketTime }}
-		</p>
-		<p>Market Price: {{ market.regularMarketPrice.fmt }}</p>
-		<p :class="marketStateClass">
-			Market Change Percent:
+		<div class="previous-close" title="Previous Close">
+			{{ market.regularMarketPreviousClose.fmt }}
+		</div>
+		<div :class="`precent ${marketStateClass}`" title="Change Percent">
 			{{ market.regularMarketChangePercent.fmt }}
-		</p>
-		<p :class="marketStateClass">Market Change: {{ market.regularMarketChange.fmt }} Today</p>
-		<p>Previous Close: {{ market.regularMarketPreviousClose.fmt }}</p>
+		</div>
+		<div
+			:class="`change ${marketStateClass}`"
+			title="Today's Market Change"
+		>
+			{{ market.regularMarketChange.fmt }}
+		</div>
+		<div class="price" title="Market Price">
+			{{ market.regularMarketPrice.fmt }}
+		</div>
 	</main>
 </template>
 
 <script>
+	import { utilService } from '@/services/util.service.js'
 	export default {
 		name: 'market-preview',
 		props: ['market'],
@@ -37,10 +53,14 @@
 					this.market.regularMarketTime.raw * 1000
 				).toLocaleString()
 			},
-			marketStateClass(){
-				const isPositive = this.market.regularMarketPrice.raw > 0
-				return {'market-rise': isPositive, 'market-decline': !isPositive}
-			}
+			marketStateClass() {
+				const isPositive =
+					this.market.regularMarketChangePercent.raw > 0
+				return isPositive ? 'market-rise' : 'market-decline'
+			},
+			tagBackgroundColor(){
+				return utilService.getRandomColor();
+			},
 		},
 	}
 </script>

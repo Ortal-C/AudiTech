@@ -13,8 +13,12 @@
 @import 'components/layout/app-header';
 @import 'components/layout/logo';
 @import 'components/user-icon';
+@import 'components/user-menu';
+@import 'components/market/market-list';
+@import 'components/market/market-preview';
 
 @import 'components/loader';
 
 // VIEWS
 @import 'views/login';
+@import 'views/market-page';

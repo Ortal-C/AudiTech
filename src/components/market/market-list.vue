@@ -1,6 +1,5 @@
 <template>
 	<main class="market-list">
-		<h3>markets list</h3>
 		<ul>
 			<li v-for="market in markets" :key="market.symbol">
 				<market-preview :market="market" />

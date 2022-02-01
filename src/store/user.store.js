@@ -45,6 +45,16 @@ export const userStore = {
                 throw err
             }
         },
+        async logout({ commit }) {
+            try {
+                await userService.logout()
+                commit({ type: 'setUser', user: {} })
+                commit({ type: 'setIsLoggedin', user: {} })
+            } catch (err) {
+                console.log('userStore: Error in logout', err)
+                throw err
+            }
+        },
         async signup({ commit }, { userCred }) {
             try {
                 const user = await userService.signup(userCred)
@@ -52,15 +62,6 @@ export const userStore = {
                 return user;
             } catch (err) {
                 console.log('userStore: Error in signup', err)
-                throw err
-            }
-        },
-        async logout({ commit }) {
-            try {
-                await userService.logout()
-                commit({ type: 'setLoggedinUser', user: null })
-            } catch (err) {
-                console.log('userStore: Error in logout', err)
                 throw err
             }
         },

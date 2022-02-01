@@ -26,10 +26,11 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	text-align: center;
 }
 
 h1 {
-	font-size: rem(60px);
+	font-size: rem(48px);
 }
 h2 {
 	font-size: rem(32px);
@@ -47,6 +48,7 @@ a:visited {
 }
 p {
 	margin: 0;
+	font-size: 0.85rem;
 }
 
 ul {

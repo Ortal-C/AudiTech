@@ -14,6 +14,7 @@ const API_KEY = 'Te2x5CaAEGVod0rPNpLg2oaoT69yx0FYUH6ufeh0'
 const KEY = 'marketsDB'
 export const marketService = {
     query,
+    reset,
     getById,
 }
 
@@ -32,6 +33,10 @@ async function query() {
         console.log('Markets fetched from local-storage');
     }
     return markets
+}
+async function reset() {
+    localStorage.removeItem(KEY);
+    return true;
 }
 
 // async function query() {
