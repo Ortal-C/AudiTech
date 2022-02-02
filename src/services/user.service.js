@@ -7,12 +7,12 @@ const gUser = {
 
 async function login(userCred) {
     const { username, password } = userCred;
-    const isLogged = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || null
-    if (!isLogged && gUser.username === username && gUser.password === utilService.decrypt(password)) {
+    const user = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || null
+    if (!user && gUser.username === username && utilService.encrypt(gUser.password) === (password)) {
         sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, username)
         return username
     }
-    return isLogged
+    return user
 }
 
 function getLoggedinUser() {

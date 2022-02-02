@@ -9,7 +9,7 @@ export const marketService = {
 async function query() {
     let markets = JSON.parse(localStorage.getItem(KEY)) || []
     if (markets.length === 0) {
-        const res = await yahooService.authorization()
+        const res = await yahooService.getMarketSummary()
         markets = res.data.marketSummaryResponse.result;
         _save(KEY, markets)
     }
