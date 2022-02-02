@@ -13,6 +13,6 @@
 	color: $txt;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+		justify-content: flex-start;
 	animation: container-appears 1s ease-out forwards;
 }

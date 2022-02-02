@@ -3,15 +3,30 @@ import { marketService } from '../services/market.service.js';
 export const marketStore = {
     state: {
         isLoading: false,
+        filterBy: 'All',
         markets: [],
         currMarket: null,
     },
     getters: {
         isLoading({ isLoading }) { return isLoading; },
+        filteredMarkets({ markets, filterBy }) {
+            console.log('filterBy', filterBy);
+            switch (filterBy) {
+                case 'positiveChange':
+                    return markets.filter(market => market.regularMarketChange.raw > 0)
+                case 'negativeChange':
+                    return markets.filter(market => market.regularMarketChange.raw < 0)
+                default:
+                    return markets;
+            }
+        },
         markets({ markets }) { return markets; },
         currMarket({ currMarket }) { return currMarket; },
     },
     mutations: {
+        setFilterBy(state, { filterBy }) {
+            state.filterBy = filterBy;
+        },
         setLoading(state, { isLoading }) {
             state.isLoading = isLoading;
         },
@@ -27,6 +42,7 @@ export const marketStore = {
             try {
                 commit({ type: 'setLoading', isLoading: true });
                 const markets = await marketService.query()
+                commit({ type: 'setFilterBy', filterBy: 'all' })
                 commit({ type: 'setMarkets', markets })
                 commit({ type: 'setLoading', isLoading: false });
                 return markets;
