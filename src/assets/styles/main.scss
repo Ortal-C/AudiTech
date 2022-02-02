@@ -8,19 +8,24 @@
 @import 'basics/base';
 
 // COMPONENTS
+//Layout
 @import 'components/layout/app-header';
 @import 'components/layout/logo';
-@import 'components/user-icon';
-@import 'components/user-menu';
+
+//UI
+@import 'components/UI/user-icon';
+@import 'components/UI/user-menu';
+@import 'components/UI/container';
+@import 'components/UI/loader';
+@import 'components/UI/modal/backdrop';
+@import 'components/UI/modal/modal-content';
+
+//Market
 @import 'components/market/market-list';
 @import 'components/market/market-preview';
 @import 'components/market/market-title';
 @import 'components/market/details-preview';
-@import 'components/UI/modal/backdrop';
-@import 'components/UI/modal/modal-content';
-@import 'components/UI/container';
 
-@import 'components/loader';
 
 // VIEWS
 @import 'views/login';

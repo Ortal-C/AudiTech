@@ -8,7 +8,7 @@
 <script>
 	import { utilService } from '@/services/util.service.js'
 	export default {
-		name: 'market-title',
+		name: 'details-preview',
 		props: ['name', 'value'],
 		computed: {
 			key() {

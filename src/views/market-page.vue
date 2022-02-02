@@ -1,5 +1,5 @@
 <template>
-	<div v-if="isLoggedIn" class="market-page">
+	<main v-if="isLoggedIn" class="market-page">
 		<img class="market-img" src="@/assets/imgs/main.jpg" alt="image" />
 		<main class="main-content">
 			<h1>Markets Summary</h1>
@@ -18,10 +18,10 @@
 			/>
 		</main>
 		<router-view></router-view>
-	</div>
-	<div v-else>
+	</main>
+	<main v-else>
 		<not-autorized />
-	</div>
+	</main>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
-	<section class="user-menu">
+	<main class="user-menu">
 		<backdrop @close="close" />
-		<main >
+		<section>
 			<h4>Hi, {{ user.username }}</h4>
 			<button @click="updateData">Update List</button>
 			<button @click="doLogout">Logout</button>
-		</main>
-	</section>
+		</section>
+	</main>
 </template>
 
 <script>
@@ -18,35 +18,33 @@
 			close() {
 				this.$emit('close')
 			},
-            async updateData(){
-                try{
+			async updateData() {
+				try {
 					this.close()
-                    await this.$store.dispatch({
-                            type: 'resetMarkets',
-                        })  
-                    await this.$store.dispatch({
-                            type: 'loadMarkets',
-                        })
-                }catch (err) {
+					await this.$store.dispatch({
+						type: 'resetMarkets',
+					})
+					await this.$store.dispatch({
+						type: 'loadMarkets',
+					})
+				} catch (err) {
 					console.log('Failed to reload markets', err)
 				}
-            },
+			},
 			async doLogout() {
 				try {
 					await this.$store.dispatch({
 						type: 'logout',
 					})
 					this.close()
-                    this.$router.back('/')
+					this.$router.back('/')
 				} catch (err) {
 					console.log('Failed to login', err)
 				}
 			},
 		},
-			components: {
-				backdrop,
-			},
+		components: {
+			backdrop,
+		},
 	}
 </script>
-
-<style></style>

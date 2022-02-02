@@ -10,6 +10,7 @@
 
 <script>
 	export default {
+		name: 'not-autorized',
 		methods: {
 			navigateToLoginPage() {
 				this.$router.push('/')
@@ -17,5 +18,3 @@
 		},
 	}
 </script>
-
-<style></style>

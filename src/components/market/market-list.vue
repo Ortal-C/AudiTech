@@ -7,7 +7,7 @@
 		</ul>
 	</main>
 </template>
-showMarketDetails
+
 <script>
 	import marketPreview from '@/components/market/market-preview.vue'
 	export default {

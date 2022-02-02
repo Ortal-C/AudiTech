@@ -10,7 +10,6 @@ export const marketStore = {
     getters: {
         isLoading({ isLoading }) { return isLoading; },
         filteredMarkets({ markets, filterBy }) {
-            console.log('filterBy', filterBy);
             switch (filterBy) {
                 case 'positiveChange':
                     return markets.filter(market => market.regularMarketChange.raw > 0)

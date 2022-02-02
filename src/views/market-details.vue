@@ -20,9 +20,9 @@
 			</ul>
 		</main>
 	</main>
-	<div v-else>
+	<main v-else>
 		<not-autorized />
-	</div>
+	</main>
 </template>
 
 <script>
