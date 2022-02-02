@@ -1,0 +1,39 @@
+.market-title {
+	grid-area: 'title';
+	display: flex;
+	justify-content: flex-start;
+}
+
+.market-tag {
+	text-align: center;
+	text-shadow: 0.5px 1px 0.5px #00000075;
+	color: $txt;
+	border-radius: 0.5em;
+	padding: 0.25rem;
+	height: 2rem;
+	width: 80px;
+	margin-inline-end: 24px;
+}
+
+@media (max-width: $break-mobile) {
+	.market-title {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	.market-tag {
+		margin-inline-end: 10px;
+	}
+}
+@media (min-width: $break-mobile) and (max-width: $break-narrow) {
+	.market-title {
+		grid-column-start: 1;
+		grid-column-end: 5;
+	}
+}
+
+@media (min-width: $break-narrow) {
+	.market-title {
+		grid-column-start: 1;
+		grid-column-end: 2;
+	}
+}

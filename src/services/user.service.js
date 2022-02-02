@@ -1,19 +1,9 @@
 import { storageService } from './async-storage.service'
 import { utilService } from './util.service'
-// import { httpService } from './http.service'
-// import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-var gWatchedUser = null;
-
 const gUser = {
     username: 'guest',
     password: '123'
-}
-
-export const userService = {
-    login,
-    logout,
-    getLoggedinUser,
 }
 
 async function login(userCred) {
@@ -34,3 +24,9 @@ async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
 }
 
+
+export const userService = {
+    login,
+    logout,
+    getLoggedinUser,
+}

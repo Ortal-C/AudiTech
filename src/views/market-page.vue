@@ -2,7 +2,7 @@
 	<div v-if="isLoggedIn" class="market-page">
 		<img class="market-img" src="@/assets/imgs/main.jpg" alt="image" />
 		<main class="main-content">
-			<h1>Markets state summary</h1>
+			<h1>Markets Summary</h1>
 			<market-list
 				:markets="markets"
 				@showMarketDetails="showMarketDetails"

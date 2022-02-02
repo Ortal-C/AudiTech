@@ -1,24 +1,37 @@
 .market-details {
-    width: 100%;
+	width: 100%;
 	.main-content {
-		overflow-y: scroll;
 		position: fixed;
 		left: 12.5%;
-		top: 25%;
+		top: 12.5%;
 		transform: translate(-50%, -50%);
 		z-index: 100;
 		width: 75%;
-		height: 66%;
+		height: 75%;
 		background: #fff;
-        color: $mainBgc;
-		ul li{
-			&:nth-child(even){
-				background-color: $thirdBgc;
+		color: $mainBgc;
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: $layoutPadding / 2;
+			button {
+				background-color: transparent;
+				border: none;
+				padding: 0;
+				color: $mainBgc;
+				&:hover {
+					color: $brand;
+				}
 			}
 		}
-		.key{
-			display: inline-block;
-			width:50%;
+		ul {
+			overflow-y: scroll;
+		}
+		li {
+			&:nth-child(even) {
+				background-color: $thirdBgc;
+			}
 		}
 	}
 }

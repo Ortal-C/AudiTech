@@ -1,0 +1,20 @@
+.details-preview {
+	display: flex;
+	flex-flow: row wrap;
+	padding: $layoutPadding/2 0;
+	.key {
+		display: inline-block;
+		min-width: 240px;
+		font-weight: 600;
+		width: 50%;
+		margin-inline-end: $layoutPadding;
+	}
+}
+
+@media (max-width: $break-narrow) {
+	.details-preview {
+		.key {
+			min-width: 100%;
+		}
+	}
+}

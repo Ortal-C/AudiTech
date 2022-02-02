@@ -58,10 +58,20 @@ ul {
 li {
 	list-style: none;
 }
- 
-img {
-		height: 200px;
-		width: 200px;
-		border-radius: 4px;
-		box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
-	}
+
+// Scrollbar
+::-webkit-scrollbar {
+	width: 0.66em;
+	height: 80%;
+}
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	padding: 10px;
+	background: gray;
+	border-radius: 1em;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: $brand;
+}

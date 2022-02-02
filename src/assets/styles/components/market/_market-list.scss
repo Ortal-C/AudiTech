@@ -2,19 +2,5 @@
     max-height: 75%;
 	overflow-y: scroll;
 
-	&::-webkit-scrollbar {
-		width: 0.66em;
-		height: 80%;
-	}
-	&::-webkit-scrollbar-track {
-		border-radius: 10px;
-	}
-	&::-webkit-scrollbar-thumb {
-		padding: 10px;
-		background: gray;
-		border-radius: 1em;
-	}
-	&::-webkit-scrollbar-thumb:hover {
-		background: $brand;
-	}
 }
+

@@ -1,13 +1,16 @@
 .market-page {
 	height: $mainContentHeight;
 	overflow-x: hidden;
+	h1{
+		font-size:2em;
+	}
 	.market-img {
 		width: 125%;
 		height: 20rem;
 		z-index: 0;
 		overflow: hidden;
 		object-fit: cover;
-		transform: rotateZ(-5deg) translateY(-4rem) translateX(0);
+		transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
 	}
 }
 

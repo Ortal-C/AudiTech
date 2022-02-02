@@ -1,35 +1,15 @@
 .market-preview {
 	width: 100%;
-	border-bottom: 1px dotted rgba(128, 128, 128, 0.335);
+	border-bottom: 1px dotted $thirdBgc;
 	display: grid;
-	grid-template-columns: 40% 12% 12% 12% 12% auto;
-	grid-template-rows: 80px;
-	grid-template-areas: 'title' 'previous-close' 'precent' 'change' 'price' 'btn-details';
+	cursor: pointer;
 	& > * {
-		padding: 0.25rem;
+		padding: 0.5rem;
 		margin-inline-end: 0 2%;
 		font-size: 0.85rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-	.title {
-		grid-area: 'title';
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		main {
-			display: flex;
-			.tag {
-				text-align: center;
-				text-shadow: 0.5px 1px 0.5px #00000075;
-				border-radius: 0.5em;
-				padding: 0.25rem;
-				height: 2rem;
-				width: 80px;
-				margin-inline-end: 24px;
-			}
-		}
 	}
 	.previous-close {
 		grid-area: 'previous-close';
@@ -42,15 +22,6 @@
 	}
 	.price {
 		grid-area: 'price';
-	}
-	.btn-details {
-		grid-area: 'btn-details';
-		background-color: transparent;
-		border: none;
-		color: $txt;
-		&:hover {
-			color: $brand;
-		}
 	}
 	.state {
 		align-self: center;
@@ -72,5 +43,31 @@
 		background-color: #fef0f0;
 		border: 1px solid #fde2e2;
 		color: #f56c6c;
+	}
+}
+
+@media (max-width: $break-mobile) {
+	.market-preview {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:
+			'title title'
+			'previous-close' 'precent'
+			'change' 'price';
+	}
+}
+@media (min-width: $break-mobile) and (max-width: $break-narrow) {
+	.market-preview {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas:
+			'title title title title'
+			'previous-close' 'precent' 'change' 'price';
+	}
+}
+
+@media (min-width: $break-narrow) {
+	.market-preview {
+		grid-template-rows: 80px;
+		grid-template-columns: 50% 12% 12% 12% 12%;
+		grid-template-areas: 'title' 'previous-close' 'precent' 'change' 'price';
 	}
 }

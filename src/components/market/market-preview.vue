@@ -1,57 +1,70 @@
 <template>
-	<main class="market-preview" @click="showMarketDetails">
-		<header class="title">
-			<main>
-				<div
-					class="tag" :style="`background-color: ${tagBackgroundColor}`"
-					:title="`Market symbol: ${market.symbol}`"
-				>
-					{{ market.exchange }}
-				</div>
-				<h3 :title="`Short name: ${market.shortName}`">
-					{{ market.shortName }}
-				</h3>
-			</main>
-			<p
-				:title="`Regular Market Time: ${market.regularMarketTime.fmt}`"
-			>
-				<span>Last Update:</span>
-				{{ marketTime }}
-			</p>
-		</header>
-		<div class="previous-close" title="Previous Close">
-			{{ market.regularMarketPreviousClose.fmt }}
-		</div>
-		<div :class="`precent state ${marketStateClass}`" title="Change Percent">
-			{{market.regularMarketChangePercent.fmt }}
-		</div>
+	<main class="market-preview" @click="showMarketDetails" title="Click on row for more details">
+		<market-title :market="market" :bgc="tagBackgroundColor" />
 		<div
-			:class="`change state ${marketStateClass}`"
-			title="Today's Market Change"
+			v-for="section in sections"
+			:key="section.key"
+			:class="section.class"
+			:title="section.title"
 		>
-			{{ market.regularMarketChange.fmt }}
+			{{ section.entry }}
 		</div>
-		<div class="price" title="Market Price">
-			{{ market.regularMarketPrice.fmt }}
-		</div>
-		<button class="btn-details" title="Click for more details">→</button>
 	</main>
 </template>
 
 <script>
 	import { utilService } from '@/services/util.service.js'
+	import marketTitle from '@/components/market/market-title.vue'
 	export default {
 		name: 'market-preview',
 		props: ['market'],
-		data(){
-			return{
-				isPositive: this.market.regularMarketChangePercent.raw > 0,
+		data() {
+			return {
+				sections: [
+					{
+						key: `regularMarketPreviousClose`,
+						entry: this.market
+							.regularMarketPreviousClose.fmt,
+						class: `previous-close`,
+						title: `Previous Close`,
+					},
+					{
+						key: `regularMarketChangePercent`,
+						entry: this.market
+							.regularMarketChangePercent.fmt,
+						class: `precent state ${this.marketStateClass}`,
+						title: `Previous Close`,
+					},
+					{
+						key: `regularMarketChange`,
+						entry: this.market.regularMarketChange.fmt,
+						class: `change state ${this.marketStateClass}`,
+						title: `Today's Market Change`,
+					},
+					{
+						key: `regularMarketPrice`,
+						entry: this.market.regularMarketPrice.fmt,
+						class: 'price',
+						title: 'Market Price',
+					},
+				],
+				isPositive:
+					this.market.regularMarketChangePercent.raw > 0,
 				tagBgc: this.market.tagBackgroundColor || null,
 			}
 		},
 		methods: {
 			showMarketDetails() {
-				this.$emit('showMarketDetails', {...this.market, tagBackgroundColor: this.tagBgc})
+				const attr = {}
+				this.sections.forEach(
+					(section) => (attr[section.key] = section.entry)
+				)
+				this.$emit('showMarketDetails', {
+					...this.market,
+					...attr,
+					regularMarketTime: this.market.regularMarketTime.fmt,
+					tagBackgroundColor: this.tagBgc,
+				})
 			},
 		},
 		computed: {
@@ -61,11 +74,19 @@
 				).toLocaleString()
 			},
 			marketStateClass() {
-				return this.isPositive ? 'market-rise' : 'market-decline'
+				return this.isPositive
+					? 'market-rise'
+					: 'market-decline'
 			},
-			tagBackgroundColor(){ 
-				return this.tagBgc ? this.market.tagBackgroundColor : utilService.getRandomColor();
+			tagBackgroundColor() {
+				if (!this.tagBgc) {
+					this.tagBgc = utilService.getRandomColor()
+				}
+				return this.tagBgc
 			},
+		},
+		components: {
+			marketTitle,
 		},
 	}
 </script>
