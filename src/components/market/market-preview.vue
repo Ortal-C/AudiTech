@@ -1,14 +1,18 @@
 <template>
-	<main class="market-preview" @click="showMarketDetails" title="Click on row for more details">
+	<main
+		class="market-preview"
+		@click="showMarketDetails"
+		title="Click on row for more details"
+	>
 		<market-title :market="market" :bgc="tagBackgroundColor" />
-		<div
+		<main
 			v-for="section in sections"
 			:key="section.key"
-			:class="section.class"
+			:class="`${section.class} ${className} `"
 			:title="section.title"
 		>
 			{{ section.entry }}
-		</div>
+		</main>
 	</main>
 </template>
 
@@ -18,8 +22,11 @@
 	export default {
 		name: 'market-preview',
 		props: ['market'],
+
 		data() {
 			return {
+				className: '',
+				tagBgc: null,
 				sections: [
 					{
 						key: `regularMarketPreviousClose`,
@@ -32,13 +39,13 @@
 						key: `regularMarketChangePercent`,
 						entry: this.market
 							.regularMarketChangePercent.fmt,
-						class: `precent state ${this.marketStateClass}`,
+						class: `precent state`,
 						title: `Previous Close`,
 					},
 					{
 						key: `regularMarketChange`,
 						entry: this.market.regularMarketChange.fmt,
-						class: `change state ${this.marketStateClass}`,
+						class: `change state`,
 						title: `Today's Market Change`,
 					},
 					{
@@ -48,10 +55,15 @@
 						title: 'Market Price',
 					},
 				],
-				isPositive:
-					this.market.regularMarketChangePercent.raw > 0,
-				tagBgc: this.market.tagBackgroundColor || null,
 			}
+		},
+		created() {
+			this.className = String(
+				this.market.regularMarketChange.raw < 0
+					? 'market-decline'
+					: 'market-rise'
+			)
+			this.tagBgc = this.market.tagBackgroundColor || null
 		},
 		methods: {
 			showMarketDetails() {
@@ -62,7 +74,8 @@
 				this.$emit('showMarketDetails', {
 					...this.market,
 					...attr,
-					regularMarketTime: this.market.regularMarketTime.fmt,
+					regularMarketTime:
+						this.market.regularMarketTime.fmt,
 					tagBackgroundColor: this.tagBgc,
 				})
 			},

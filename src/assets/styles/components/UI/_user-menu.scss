@@ -1,4 +1,4 @@
-.user-menu main {
+.user-menu section{
 	position: absolute;
 	z-index: 40;
 	top: $headerHeight;
@@ -10,6 +10,7 @@
 	animation: slide-down 300ms ease-out forwards;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	align-content: center;
 	button {
 		z-index: 40;

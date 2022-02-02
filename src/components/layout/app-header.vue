@@ -1,7 +1,7 @@
 <template>
 	<main>
 		<header class="app-header">
-			<div class="logo">Market Summary</div>
+			<div class="logo">Markets Summary</div>
 			<div v-if="isLoggedIn">
 				<user-icon @userOptions="toggleMenu" />
 			</div>
